@@ -8,7 +8,7 @@ class Tentacle{
   int segCount;
   
   Tentacle(float anchorX_, float anchorY_){
-    segCount = 20;
+    segCount = 10;
     tentacle = new Segment[segCount];
     anchorX = anchorX_;
     anchorY = anchorY_;
@@ -19,7 +19,7 @@ class Tentacle{
   void initTentacle(){
     tentacle[0] = new Segment(anchorX, anchorY, 100, random(TWO_PI), 20);
     float scale;
-    scale = 0.75;
+    scale = 0.85;
     for(int i = 1; i < segCount; i++){
       if(i == 1){
         tentacle[i] = new Segment(tentacle[0],tentacle[0].length*scale,random(TWO_PI),round(tentacle[0].lineThick*scale));

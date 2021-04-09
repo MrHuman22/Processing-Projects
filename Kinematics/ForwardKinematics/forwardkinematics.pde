@@ -6,8 +6,9 @@ Tentacle[] creature;
 
 void setup(){
     size(1000, 1000);
-    creature = new Tentacle[1];
+    creature = new Tentacle[2];
     creature[0] = new Tentacle(width/2, height/2);
+    creature[1] = new Tentacle(0, height/2);
     stroke(255);
     strokeWeight(5);
 }

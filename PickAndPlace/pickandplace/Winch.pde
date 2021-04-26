@@ -5,6 +5,7 @@ class Winch{
   // needs to know it's own circumference
   float C;
   float aPos;
+  float spoolLength;
   
   Winch(float x, float y, float r, float len){
     centre = new PVector(x,y);
@@ -14,8 +15,15 @@ class Winch{
     pos = new PVector(centre.x + radius*cos(aPos), centre.y + radius*cos(aPos));
 }
   
+  float spoolL2aPos(float spoolL){
+    return spoolL/C*TWO_PI;
+  }
   
-  void update(float len){
+  float aPos2Spool(float aPos){
+    return C/(aPos*TWO_PI);
+  }
+  
+  void updateInverse(float len){
     aPos = len/C*TWO_PI;
     pos.set(centre.x + radius*cos(aPos), centre.y + radius*sin(aPos));
   }

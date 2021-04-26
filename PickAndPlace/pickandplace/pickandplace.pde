@@ -10,6 +10,7 @@ PVector R, r;
 float a;
 int winchSize;
 
+
 void setup() {
   size(1000, 1000);
   ellipseMode(RADIUS);
@@ -43,9 +44,9 @@ void draw() {
   r = PVector.sub(target,PulleyRight);
   
   // update and draw winches
-  winchLeft.update(R.mag());
+  winchLeft.updateInverse(R.mag());
   winchLeft.show();
-  winchRight.update(r.mag());
+  winchRight.updateInverse(r.mag());
   winchRight.show();
 
   // draw the frame

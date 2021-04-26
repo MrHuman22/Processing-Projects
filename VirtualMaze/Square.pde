@@ -13,7 +13,7 @@ class Square{
         fill(10,10,255);
         break;
       case "Start":
-        fill(0,255,0);
+        fill(10,255,10);
         break;
       case "OnPath":
         fill(255);

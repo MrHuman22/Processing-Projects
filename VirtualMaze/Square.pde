@@ -1,10 +1,12 @@
 class Square{
   String type;
   int col, row;
+  boolean pathSquare;
   Square(String type_, int col_, int row_){
     type = type_;
     col = col_;
     row = row_;
+    pathSquare = false;
   }
   
   void show(){

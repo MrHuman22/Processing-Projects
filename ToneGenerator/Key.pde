@@ -1,8 +1,8 @@
-class Key{
-  /* 
-  Each key has an associated frequency
-  It needs to be able to 
-  */
+class Key {
+  /*
+   Each key has an associated frequency
+   It needs to be able to detect if it's been pressed
+   */
   float freq, w, h;
   String note;
   PVector topL;
@@ -10,29 +10,32 @@ class Key{
   boolean isSustained = false;
   boolean isSeleted = false;
   boolean isUnderMouse = false;
-  
-  Key(String note_, float freq_, boolean isWhite_){
+
+  Key(String note_, float freq_, boolean isWhite_) {
     note = note_;
     freq = freq_;
     isWhite = isWhite_;
-     // always lines up with the top left
-    if(isWhite){
+    // always lines up with the top left
+    if (isWhite) {
       w = width/8;
       h = height;
     } else {
       w = width/16;
       h = height*0.75;
-      
     }
   }
-  
-  void show(){
+
+  void show() {
     stroke(0);
     strokeWeight(2);
-    if(isWhite){
-      fill(255);
+    if (isUnderMouse) {
+      fill(10, 10, 255);
     } else {
-      fill(0);
+      if (isWhite) {
+        fill(255);
+      } else {
+        fill(0);
+      }
     }
     rect(topL.x, topL.y, w, h);
   }

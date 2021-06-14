@@ -11,7 +11,7 @@ class EndEffector{
     return soln;
   }
   
-  float angularPositionToR(Winch w1, Winch w2){
+  //float angularPositionToR(Winch w1, Winch w2){
     
-  }
+  //}
 }

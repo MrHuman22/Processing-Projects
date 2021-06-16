@@ -1,8 +1,10 @@
 class Keyboard {
   Key[] keys;
   SinOsc sineWaves;
+  int selectedKey;
   Keyboard() {
     keys = new Key[13];
+    selectedKey = 0;
     initKeys();
   }
 
@@ -38,31 +40,35 @@ class Keyboard {
     }
   }
 
-  void positionMouse() {
+  void hover() {
     // first, set all things to not selected
     for (Key eachK : keys) {
       eachK.isUnderMouse = false;
     }
+    keys[selectedKey].isUnderMouse = true;
+  }
 
+  void positionMouse() {
     for (int i = 0; i < keys.length; i++) {
       // grabbing relevant info
       float x = keys[i].topL.x;
       float w = keys[i].w;
       float h = keys[i].h;
       // set the black keys BEFORE the white keys
-      if (!keys[i].isWhite) {
-        if (mouseX > x && mouseX < x+w && mouseY < h) {
-          keys[i].isUnderMouse = true;
-          keys[i-1].isUnderMouse = false;
-          return; //finish early
-        }
-      } else {
-        if (mouseX > x && mouseX < x+w && mouseY < h) {
-          keys[i].isUnderMouse = true;
-        }
+      if (!keys[i].isWhite && mouseX > x && mouseX < x+w && mouseY < h) {
+        selectedKey = i;
+        return; //finish early
+      } else if (keys[i].isWhite && mouseX > x && mouseX < x+w && mouseY < h) {
+        selectedKey = i;
+        return; //finish early
       }
     }
   }
+
+  void playNotes() {
+  }
+
+
 
   void show() {
     //first draw the white keys
@@ -78,5 +84,11 @@ class Keyboard {
         k.show();
       }
     }
+
+    stroke(255);
+    fill(255);
+    textSize(40);
+    textAlign(CENTER);
+    text(selectedKey, width/2, height/2);
   }
 }

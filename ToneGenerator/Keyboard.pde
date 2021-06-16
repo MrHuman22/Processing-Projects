@@ -1,6 +1,6 @@
 class Keyboard {
   Key[] keys;
-  SinOsc sineWaves;
+  
   int selectedKey;
   Keyboard() {
     keys = new Key[13];
